@@ -1,8 +1,8 @@
 /**
- * CosSinCalc version 6.0.7
+ * CosSinCalc version 6.0.7m
  * http://cossincalc.com/
  * 
- * Note: This file should be minified at http://www.refresh-sf.com/yui/ set to "Minify only, no symbol obfuscation.".
+ * Note: This file should be minified at http://refresh-sf.com Use the YUI Compressor and set it to "Minify only, do not obfuscate.".
  * 
  * Copyright (c) 2010-2012 Molte Emil Strange Andersen
  * 
@@ -24,10 +24,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+ 
+/**
+ * This version has been modified to run with the offline project at https://github.com/antonjuulnaber/CosSinCalc-OFFLINE
+ */
 
 
 var CosSinCalc = {};
-CosSinCalc.VERSION = "6.0.7";
+CosSinCalc.VERSION = "6.0.7m";
 
 /**
  * -------------------------------------------------------
@@ -221,12 +225,12 @@ CosSinCalc.Triangle = function() {
 
 CosSinCalc.Triangle.VARIABLES      = ['a', 'b', 'c'];
 CosSinCalc.Triangle.ERROR_MESSAGES = {
-  notEnoughVariables: '3 values must be specified. Please fill in 3 of the text boxes.',
-  tooManyVariables:   'Only 3 values should be specified. Please leave the rest of the text boxes empty.',
-  noSides:            'At least one side must be given.',
-  invalidSide:        'Only numbers (above zero) are accepted values for a side.',
-  invalidAngle:       'Only numbers (above zero) are accepted values for an angle. Furthermore the angle must remain inside the scope of the sum of all angles in the triangle.',
-  invalidTriangle:    'The specified values do not match a valid triangle.'
+  notEnoughVariables: "Beregneren skal bruge 3 værdier.",
+    tooManyVariables: "Beregneren skal kun bruge 3 værdier.",
+    noSides: "Beregneren skal kende mindst én sidelængde.",
+    invalidSide: "Kun tal (over nul) kan bruges som sidelængde.",
+    invalidAngle: "Kun tal (over nul) kan bruges som vinkler. Vinklen skal også være mindre end summen af alle vinkler i en trekant.",
+    invalidTriangle: "De givne værdier kan ikke skabe en trekant."
 };
 
 /**
@@ -566,12 +570,12 @@ CosSinCalc.Triangle.Calculator = function(t) {
  * The t param should be the triangle object.
  */
 CosSinCalc.Triangle.Validator = function(t) {
-  var NOT_ENOUGH_VARIABLES = '3 values must be specified. Please fill in 3 of the text boxes.',
-      TOO_MANY_VARIABLES   = 'Only 3 values should be specified. Please leave the rest of the text boxes empty.',
-      NO_SIDES             = 'At least one side must be given.',
-      INVALID_SIDE         = 'Only numbers (above zero) are accepted values for a side.',
-      INVALID_ANGLE        = 'Only numbers (above zero) are accepted values for an angle. Furthermore the angle must remain inside the scope of the sum of all angles in the triangle.',
-      INVALID_TRIANGLE     = 'The specified values do not match a valid triangle.';
+  var NOT_ENOUGH_VARIABLES = "Beregneren skal bruge 3 værdier."
+      , TOO_MANY_VARIABLES = "Beregneren skal kun bruge 3 værdier."
+      , NO_SIDES = "Beregneren skal kende mindst én sidelængde."
+      , INVALID_SIDE = "Kun tal (over nul) kan bruges som sidelængde."
+      , INVALID_ANGLE = "Kun tal (over nul) kan bruges som vinkler. Vinklen skal også være mindre end summen af alle vinkler i en trekant."
+      , INVALID_TRIANGLE = "De givne værdier kan ikke skabe en trekant.";
   
   var validation = {
     sides:      { a: null, b: null, c: null, amount: 0 },
@@ -702,8 +706,8 @@ CosSinCalc.Triangle.Drawing = function(t, canvasSize, padding) {
     var paper   = Raphael(container, canvasSize + padding * 2, canvasHeight + padding * 2);
     var polygon = paper.path("M " + coords.a.join(' ') + " L " + coords.b.join(' ') + " L " + coords.c.join(' ') + " Z");
     polygon.attr({
-      'fill': '#f5eae5',
-      'stroke': '#993300',
+      'fill': '#dbeada',
+      'stroke': '#dbeada',
       'stroke-width': 1
     });
     
