@@ -2,7 +2,7 @@
 
 
 [![Release version](https://img.shields.io/github/release/antonjuulnaber/cossincalc-offline.svg?style=for-the-badge)](https://github.com/antonjuulnaber/CosSinCalc-OFFLINE/releases)
-[![Version](https://img.shields.io/github/package-json/v/antonjuulnaber/cossincalc-offline.svg?style=for-the-badge)](https://github.com/antonjuulnaber/CosSinCalc-OFFLINE/releases)
+[![Version](https://img.shields.io/github/package-json/v/antonjuulnaber/cossincalc-offline.svg?style=for-the-badge&label=pre-release)](https://github.com/antonjuulnaber/CosSinCalc-OFFLINE/releases)
 [![Dependencies](https://img.shields.io/david/antonjuulnaber/cossincalc-offline.svg?style=for-the-badge)](https://david-dm.org/antonjuulnaber/cossincalc-offline)
 
 [![Downloads](https://img.shields.io/github/downloads/antonjuulnaber/cossincalc-offline/total.svg?style=for-the-badge)](https://github.com/antonjuulnaber/CosSinCalc-OFFLINE/releases)
