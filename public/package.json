@@ -1,5 +1,7 @@
-"dependencies": {
-	"jquery": "3.3.1",
-	"raphael": "2.2.8",
-    "headjs": "1.0.3"
+{
+	"dependencies": {
+		"jquery": "3.3.1",
+		"raphael": "2.2.8",
+		"headjs": "1.0.3"
+	}
 }
