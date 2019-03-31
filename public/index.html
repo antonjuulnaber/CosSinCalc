@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="da">
+	<head>
+		<title>Trekantsberegner · CosSinCalc</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="stylesheets/master.css" type="text/css" />
+		<link rel="shortcut icon" href="images/favicon.png" />
+		<script src="libraries/head.load.min.js"></script>
+		<script>
+			head.js('libraries/jquery.min.js', 'libraries/raphael.min.js', 'scripts/cossincalc.min.js', 'scripts/calculator.min.js', 'libraries/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML&locale=da');
+		</script>
+	</head>
+	<body>
+		
+		<div id="unzip_message" style="margin: 3vw;">
+			<h1>Indlæser...</h1>
+			<h2>Har du pakket mig ud?</h2>
+			<p>Hvis du har glemt at pakke mig ud, vil jeg ikke virke korrekt.<br><br>
+				For at pakke mig ud, skal du finde den folder jeg ligger i. Derefter skal du højreklikke på den og vælge "Udpak alle".<br>
+				Nu kommer der en ny mappe frem. Gå ind i den nye mappe og tryk på mig igen, og så skulle det hele gerne virke :)<br><br>
+				Du kan kende den udpakkede mappe, da den ikke har nogen lynlås på sig. Hvis den har en lynlås er den ikke udpakket, og så vil jeg ikke virke.<br><br>
+				Hvis du stadig er helt på bar bund, kan det være at denne video kan hjælpe dig:<br>
+				<a href="https://youtu.be/r9hpiyzOOTY?t=39">https://youtu.be/r9hpiyzOOTY?t=39</a></p>
+			<h2>Bruger du en ældre browser?</h2>
+			<p>Hvis du bruger en ældre browser vil jeg måske ikke virke korrekt.<br><br>
+			En ældre browser kan fx. være Internet Explorer. Det kan også være en version af Chrome eller Firefox som ikke har været opdateret i lang tid.<br>
+			Jeg er designet til at køre på en opdateret version af Chrome:<br>
+			<a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a></p>
+		</div>
+		
+		<div id="unzip_mask" style="display: none">
+	
+			<header>
+				<p class="subtext">OFFLINE</p>
+				<h1 class="title">CosSinCalc</h1>
+				<div class="triangle">
+					<h1 class="title">CosSinCalc</h1>
+				</div>
+			</header>
+
+			<div id="main">
+		  
+				<form id="calculator" action="/" method="get" class="pane" onreset="return false;">
+					<div class="slideable">
+					<h3>Kendte værdier</h3>
+							<table class="variables">
+								<tr>
+									<th colspan="2">Vinkler</th>
+									<th colspan="2">Sider</th>
+								</tr>
+								<tr>
+									<td><label for="angle_a">A:</label></td>
+									<td><input type="text" id="angle_a" name="angle_a" class="angle number" tabindex="1" /></td>
+									<td><label for="side_a">a:</label></td>
+									<td><input type="text" id="side_a" name="side_a" class="side number" tabindex="4" /></td>
+								</tr>
+								<tr>
+									<td><label for="angle_b">B:</label></td>
+									<td><input type="text" id="angle_b" name="angle_b" class="angle number" tabindex="2" /></td>
+									<td><label for="side_b">b:</label></td>
+									<td><input type="text" id="side_b" name="side_b" class="side number" tabindex="5" /></td>
+								</tr>
+								<tr>
+									<td><label for="angle_c">C:</label></td>
+									<td><input type="text" id="angle_c" name="angle_c" class="angle number" tabindex="3" /></td>
+									<td><label for="side_c">c:</label></td>
+									<td><input type="text" id="side_c" name="side_c" class="side number" tabindex="6" /></td>
+								</tr>
+							</table>
+
+							<svg id="initial_drawing" height="216" version="1.1" width="400" xmlns="http://www.w3.org/2000/svg">
+								<circle class="highlight"></circle>
+								<path class="triangle" d="M20,140 l202,-116 l98,116 Z"></path>
+								<text x="16" y="146" fill="#000000" href="#angle_a">A</text>
+								<text x="218" y="27" fill="#000000" href="#angle_b">B</text>
+								<text x="315" y="145" fill="#000000" href="#angle_c">C</text>
+								<text x="280" y="83" fill="#333333" href="#side_a">a</text>
+								<text x="176" y="161" fill="#333333" href="#side_b">b</text>
+								<text x="120" y="70" fill="#333333" href="#side_c">c</text>
+								<circle class="hover" cx="21" cy="142" href="#angle_a"></circle>
+								<circle class="hover" cx="223" cy="22" href="#angle_b"></circle>
+								<circle class="hover" cx="320" cy="139" href="#angle_c"></circle>
+								<circle class="hover" cx="277" cy="83" href="#side_a"></circle>
+								<circle class="hover" cx="179" cy="146" href="#side_b"></circle>
+								<circle class="hover" cx="129" cy="73" href="#side_c"></circle>
+							</svg>
+
+					</div>
+				  
+					<div class="slideable">
+						<h3>Vinkelenhed</h3>
+						<div class="pane">
+							<table>
+								<tr>
+									<td><input type="radio" name="angle_unit" id="angle_unit_degree" value="degree" checked="checked" /></td>
+									<td><label for="angle_unit_degree">grader</label></td>
+									<td><small>(180° i en trekant)</small></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="angle_unit" id="angle_unit_gon" value="gon" /></td>
+									<td><label for="angle_unit_gon">gon</label></td>
+									<td><small>(200 gon i en trekant)</small></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="angle_unit" id="angle_unit_radian" value="radian" /></td>
+									<td><label for="angle_unit_radian">radianer</label></td>
+									<td><small>(π rad i en trekant)</small></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					
+					<div class="slideable">
+						<p class="buttons">
+							<input type="submit" class="commit" value="Beregn" />
+							<input type="button" value="Ryd" id="clear" />
+						</p>
+						<div id="errors"></div>
+					</div>
+					
+				</form>
+				
+				
+				<div id="result" class="pane">
+				  <div id="calculation_notice" class="spotlight">
+					Der kan laves to trekanter baseret på den givne information <small>(se <a href="http://en.wikipedia.org/wiki/Law_of_sines#The_ambiguous_case">Wikipedia</a> for en forklaring)</small>.
+					<a href="#" id="show_alternative">Vis anden løsning.</a>
+				  </div>
+				  
+				  <div class="slideable">
+					<h3>Resultat</h3>
+					<div class="pane">
+					  <div id="drawing"></div>
+					</div>
+				  </div>
+				  
+				  <div class="slideable">
+					<div class="options">
+					  <a title="Forøg mængden af cifre vist i resultatet." href="#" id="increase_precision">Flere cifre</a> |
+					  <a title="Formindsk mængden af cifre vist i resultatet." href="#" id="decrease_precision">Færre cifre</a>
+					</div>
+					<h3>Variabler</h3>
+					<div class="pane">
+					  <table class="variables">
+						<tr>
+						  <th colspan="2">Vinkler</th>
+						  <th colspan="2">Sider</th>
+						  <th colspan="2">Længder</th>
+						  <th colspan="2">Medianer</th>
+						  <th colspan="2">Halveringslinjer</th>
+						</tr>
+						
+						  <tr>
+							<td>A = </td>
+							<td id="angle_a_result" class="variable">&nbsp;</td>
+							<td>a = </td>
+							<td id="side_a_result" class="variable">&nbsp;</td>
+							<td>h<sub>A</sub> = </td>
+							<td id="altitude_a_result" class="variable">&nbsp;</td>
+							<td>m<sub>a</sub> = </td>
+							<td id="median_a_result" class="variable">&nbsp;</td>
+							<td>t<sub>A</sub> = </td>
+							<td id="anglebisector_a_result" class="variable">&nbsp;</td>
+						  </tr>
+						
+						  <tr>
+							<td>B = </td>
+							<td id="angle_b_result" class="variable">&nbsp;</td>
+							<td>b = </td>
+							<td id="side_b_result" class="variable">&nbsp;</td>
+							<td>h<sub>B</sub> = </td>
+							<td id="altitude_b_result" class="variable">&nbsp;</td>
+							<td>m<sub>b</sub> = </td>
+							<td id="median_b_result" class="variable">&nbsp;</td>
+							<td>t<sub>B</sub> = </td>
+							<td id="anglebisector_b_result" class="variable">&nbsp;</td>
+						  </tr>
+						
+						  <tr>
+							<td>C = </td>
+							<td id="angle_c_result" class="variable">&nbsp;</td>
+							<td>c = </td>
+							<td id="side_c_result" class="variable">&nbsp;</td>
+							<td>h<sub>C</sub> = </td>
+							<td id="altitude_c_result" class="variable">&nbsp;</td>
+							<td>m<sub>c</sub> = </td>
+							<td id="median_c_result" class="variable">&nbsp;</td>
+							<td>t<sub>C</sub> = </td>
+							<td id="anglebisector_c_result" class="variable">&nbsp;</td>
+						  </tr>
+						
+					  </table>
+					  
+					  <table>
+						<tr>
+						  <th>Areal</th>
+						  <td class="variable" id="area_result">&nbsp;</td>
+						</tr>
+						<tr>
+						  <th>Omkreds</th>
+						  <td class="variable" id="circumference_result">&nbsp;</td>
+						</tr>
+					  </table>
+					</div>
+				  </div>
+				  
+				  <div class="slideable">
+					<h3>Formler</h3>
+					<div class="pane">
+					  <p>Værdierne er fundet ved hjælp af følgende udregninger:</p>
+					  <p id="calculation_steps"></p>
+					</div>
+				  </div>
+				</div>
+
+			</div>
+			
+			<footer>
+				<p><a href="http://CosSinCalc.com">CosSinCalc</a> by Molte Emil Strange Andersen (<a href="mailto:molte@cossincalc.com">molte@cossincalc.com</a>)</p>
+				<p>Modified by Anton Juul-Naber (<a href="mailto:anton@juul-naber.dk">anton@juul-naber.dk</a>)</p>
+			</footer>
+		
+		</div>
+		
+		
+	</body>
+</html>
