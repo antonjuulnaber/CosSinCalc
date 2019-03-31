@@ -1,4 +1,8 @@
 head.ready(function() {
+	
+  //Remove unzip message
+  $("#unzip_message").hide();
+  $("#unzip_mask").show();
   
   // Lookup commonly used elements.
   var calculator      = $('#calculator');
@@ -30,14 +34,9 @@ head.ready(function() {
       // Update result tab.
       writeOutput();
       
-      // Enable and switch to result tab.
-      tabs.eq(1).removeClass('disabled').click();
+      // Show results
+	  $("#result").show();
       
-      // Update URL fragment.
-      $.bbq.pushState(calculator.serialize(), 2);
-      
-      // Update origination notice to show on print.
-      $('#origination_notice').text('Printed from ' + window.location.href + '.');
     }
     else {
       // Write error messages in unordered list.
@@ -45,7 +44,7 @@ head.ready(function() {
       for (var i = 0, n = result.exceptions.length; i < n; i++) {
         errorList.append('<li>' + result.exceptions[i] + '</li>');
       }
-      errorsContainer.text('Some errors occured:').append(errorList);
+      errorsContainer.text('Noget gik galt:').append(errorList);
       
       // Mark form fields with errors.
       inputs.each(function() {
@@ -75,12 +74,15 @@ head.ready(function() {
     $('#calculation_steps').html(equations);
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'calculation_steps']);
     
-    // Draw triangle (asynchronously).
+    // Draw triangle.
     setTimeout(function() {
       var container = $('#drawing').empty();
       var drawing   = new CosSinCalc.Triangle.Drawing(triangle, 300, 50);
       drawing.draw(container[0]);
-    }, 100);
+	  
+	  //Scroll results into view
+	  $("#result")[0].scrollIntoView();
+    }, 0);
   }
   
   // Clear all text fields and remove errors on reset.
@@ -90,50 +92,61 @@ head.ready(function() {
   });
   
   // Link triangle image map to form fields.
-  $('#triangle_variables_map area').click(function() {
+  $('#initial_drawing .hover').mouseenter(function() {
+    $($(this).attr('href')).focus();
+    return false;
+  });
+  $('#initial_drawing .hover').click(function() {
     $($(this).attr('href')).focus();
     return false;
   });
   
-  // Make all navigation tabs not linking to another page, act as tab.
-  var tabs = $("#header .nav a[href^='#']");
-  var tabPanes = $('#main > .pane');
-  var currentTab = 0;
-  
-  tabs.first().addClass('active');
-  
-  tabs.each(function(i) {
-    $(this).click(function() {
-      if (i != currentTab && !$(this).hasClass('disabled')) {
-        tabs.removeClass('active').eq(i).addClass('active');
-        tabPanes.hide().eq(i).show();
-        currentTab = i;
-      }
-      
-      return false;
-    });
-  });
-  
   // Change triangle image overlay on form field focus/blur.
-  inputs.focus(function() {
+  inputs.mouseenter(function() {
+	inputs.removeClass('focus');
     $(this).removeClass('error').addClass('focus').select();
-    triangleImage.attr('src', overlaySource(this.id));
+	setDrawingHighlight(this.id);
+  }).focus(function() {
+	inputs.removeClass('focus');
+    $(this).removeClass('error').addClass('focus').select();
+	setDrawingHighlight(this.id);
   }).blur(function() {
     $(this).removeClass('focus');
-    triangleImage.attr('src', '/images/triangle_overlay_empty.png');
+    $("#initial_drawing .highlight")[0].style.opacity = 0;
   });
   
-  function overlaySource(id) {
-    return '/images/triangle_overlay_' + id + '.png';
+  function setDrawingHighlight(id){
+	hlight = $("#initial_drawing .highlight")[0];
+	hlight.style.opacity = 1;
+	switch(id){
+		case "angle_a":
+			hlight.setAttribute("cx", 21);
+			hlight.setAttribute("cy", 142);
+			break;
+		case "angle_b":
+			hlight.setAttribute("cx", 223);
+			hlight.setAttribute("cy", 22);
+			break;
+		case "angle_c":
+			hlight.setAttribute("cx", 320);
+			hlight.setAttribute("cy", 139);
+			break;
+		case "side_a":
+			hlight.setAttribute("cx", 277);
+			hlight.setAttribute("cy", 83);
+			break;
+		case "side_b":
+			hlight.setAttribute("cx", 179);
+			hlight.setAttribute("cy", 147);
+			break;
+		case "side_c":
+			hlight.setAttribute("cx", 129);
+			hlight.setAttribute("cy", 73);
+			break;
+			
+	}
   }
   
-  // Preload overlay images (asynchronously).
-  setTimeout(function() {
-    var overlay = new Image();
-    inputs.each(function() {
-      overlay.src = overlaySource(this.id);
-    });
-  }, 100);
   
   $('#increase_precision').click(function() {
     if (!triangle.decimals) $('#decrease_precision').removeClass('disabled');
@@ -157,15 +170,5 @@ head.ready(function() {
     writeOutput();
     return false;
   });
-  
-  // Check if a URL to a saved calculation is passed.
-  if ($.param.fragment()) {
-    // Fill in form fields and calculate result.
-    calculator.deserializeObject($.deparam.fragment()).submit();
-  }
-  else {
-    // Autofocus first form field.
-    inputs.first().focus();
-  }
-  
+
 });
