@@ -1,7 +1,3 @@
-/**
- * ..
- * Theme colors: Green 1: #009900, Green 2: #55CC44, Yellow: #FFCC00, Red: #FF0000, Blue 1: #0066FF, Blue 2: #6699FF
- */
 
 /* global reset */
 * {
@@ -15,8 +11,12 @@ input {
   outline: none;
 }
 body {
-  margin: 10px;
-  font: 14px/1 Verdana, Arial, Helvetica, sans-serif;
+  font-family: Helvetica;
+  background-color: #ceefcc;
+}
+body, html{
+	width: 100%;
+	overflow-x: hidden;
 }
 
 /* links */
@@ -32,105 +32,101 @@ a:visited {
 }
 
 /* text */
-h1, h2 {
-  font: 17px Arial, Helvetica, sans-serif;
-  color: #e72;
-  margin: 20px 0 -5px;
-}
 h3 {
-  font-size: 15px;
-  color: #666;
+  font-size: 2.5vh;
+  color: #4c4c4c;
+  cursor: default;
 }
 p, h3, #main .slideable, #main .slideable .pane, #main li {
-  margin: 7px 0;
+  margin: 1vh 0;
 }
 p {
   line-height: 1.5;
 }
 small {
-  font-size: 0.8em;
+  font-size: 1.3vh;
 }
 #main ul, #main ol {
-  padding-left: 25px;
+  padding-left: 4vh;
 }
+
+
 
 /* slideables */
 #main .slideable {
-  background-color: #eee;
-  border: 1px solid #ddd;
-  padding: 7px;
-}
-
-#main .slideable .pane {
-  margin-left: 12px;
-}
-#main .collapsed .pane, #main .collapsed .options {
-  display: none;
+  margin-left: calc(50vw - 45vh);
+  margin-top: 2.5vh;
+  width: 90vh;
+  background-color: rgba(255, 255, 255, .85);
+  border-radius: .5vh;
+  box-shadow: 0 0.22vh 0.22vh 0 rgba(0,0,0,.16), 0 0 0 0.11vh rgba(0,0,0,.08);
+  padding: 1vh;
+  overflow: hidden;
 }
 
 #main .slideable h3 {
-  cursor: pointer;
   margin: 0;
-  padding-left: 12px;
-  background: url(/images/arrow_down.png) no-repeat left center;
-}
-#main .collapsed h3 {
-  background-image: url(/images/arrow_right.png);
 }
 
 /* forms */
 #calculator input.number {
-  margin: 6px;
-  padding: 5px 7px;
-  border: 1px solid #ccc;
-  border-top-color: #666;
-  border-right-color: #666;
+  margin: .8vh;
+  padding: .5vh 1vh;
+  border: .2vh solid #ccc;
+  border-radius: .5vh;
   background-color: #fff;
-  font: 14px Verdana, Arial, Helvetica, sans-serif;
   text-align: right;
-  width: 163px;
+  width: 14vh;
+  transition: border-color .2s ease-out;
 }
 #calculator input.focus {
-  margin: 5px;
-  border: 2px solid #0c0;
+  border-color: #0c0;
 }
 #calculator input.error {
-  margin: 5px;
-  border: 2px solid #f00;
+  border-color: #f00;
 }
 
 #calculator .buttons input {
-  padding: 4px 8px;
-  font: 14px Arial, Helvetica, sans-serif;
+  padding: 1.5vh .5vh;
   cursor: pointer;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: .5vh;
+  font-size: 2vh;
+  width: 10vh;
+  margin: 1vh 0 0 0;
 }
 #calculator .buttons input.commit {
   font-weight: bold;
+  margin-left: 33vh;
+  margin-right: 2vh;
 }
 
 /* tables */
 #main table {
-  margin: 20px;
+  margin: 1.5vh;
   border: none;
 }
 #main th {
-  padding: 3px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  padding: .3vh;
   text-align: left;
 }
 #main td {
-  padding: 3px;
+  padding: .2vh;
   vertical-align: middle;
 }
 
 /* options */
 #main div.options {
   text-align: right;
-  font-size: 10px;
+  font-size: 1.3vh;
 }
 #main div.options a.disabled {
   text-decoration: line-through;
+  user-select: none;
+  pointer-events: none;
+  cursor: default;
+  color: grey;
 }
 #main .slideable div.options {
   float: right;
@@ -138,83 +134,132 @@ small {
 }
 
 /* header */
-#header {
+
+header > *, header .title{
+	position: absolute;
+}
+
+header .triangle{
+	top: 1.5vh;
+	left: calc(50vw - 12.5vh);
+	background-color: #1c201c;
+	width: 10vh;
+	height: 10vh;
+	clip-path: polygon(50% 12.3%, 0% 100%, 100% 100%);
+	transform: rotate(9deg);
+	overflow: hidden;
+}
+
+header .title{
+	left: 0;
+	top: 5.5vh;
+	width: 100vw;
+	font-size: 3vh;
+	text-align: center;
+	font-weight: bold;
+	color: #1c201c;
+	user-select: none;
+}
+
+header .triangle .title{
+	top: 2.85vh;
+	left: calc(12.5vh - 50vw);
+	transform: rotate(-9deg);
+	color: #DBEADA;
+}
+
+header .subtext{
+	margin: 0;
+	top: 8.5vh;
+	left: calc(50vw - 2.5vh);
+	font-size: 2vh;
+	font-weight: bold;
+	color: #1c201c;
+	user-select: none;
+}
+
+
+header {
+	height: 15vh;
   overflow: hidden;
-  position: relative;
-  margin-bottom: 20px;
-  min-width: 900px;
 }
-#header .spotlight {
-  margin-left: 210px;
-  padding: 5px;
-  margin-bottom: 7px;
-  background-color: #fea;
-  border: 2px solid #f93;
-}
-#header .logo {
-  float: left;
-}
-#header .nav {
-  margin-left: 210px;
-  background-color: #5c4;
-  padding: 10px 10px 0;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-#header .nav li {
-  display: block;
-  list-style-type: none;
-  float: left;
-  margin: 0 5px;
-}
-#header .nav li a {
-  font-weight: bold;
-  font-family: arial;
-  color: #fff;
-  display: block;
-  padding-left: 15px;
-}
-#header .nav li a span {
-  display: block;
-  padding: 13px 15px 10px 0;
-}
-#header .nav li a:hover, #header .nav li a.active {
-  background: url(/images/navigation_item_north_west.png) #fff no-repeat left top;
-  color: #666;
-  text-decoration: none;
-}
-#header .nav li a:hover span, #header .nav li a.active span {
-  background: url(/images/navigation_item_north_east.png) #fff no-repeat right top;
-}
-#header .nav li a.disabled, #header .nav li a.disabled:hover, #header .nav li a.disabled span, #header .nav li a.disabled:hover span {
-  color: #090;
-  background: none;
-  cursor: default;
-}
+
+
+
 
 /* main content */
 #main {
-  clear: both;
-  margin-bottom: 20px;
-  width: 900px;
+  margin-bottom: 2vh;
+  width: 100%;
 }
 #main .spotlight {
-  padding: 7px;
-  margin-bottom: 7px;
+  padding: 1.5vh;
+  margin-bottom: 1.5vh;
   background-color: #fea;
-  border: 1px solid #f93;
+  border: .1vh solid #f93;
   text-align: center;
 }
 
 /* footer */
-#footer {
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-  font-size: 10px;
+footer {
+  padding: 3vh 0 1vh 0;
+  font-size: 1.4vh;
+  text-align: center;
 }
-#footer p {
-  margin: 0 0 10px;
+footer p {
+  margin: 0 0 1.5vh;
+}
+
+
+
+
+#calculator .buttons {
+  clear: both;
+}
+#calculator table.variables {
+  float: left;
+}
+#initial_drawing{
+	float: left;
+	margin: .5vh .5vh .5vh 5vh;
+	width: 38vh;
+	height: 18vh;
+	user-select: none;
+}
+#initial_drawing .triangle{
+	fill: rgba(219, 234, 218, 0.6);
+	stroke: rgba(219, 234, 218, 0.6);
+	stroke-width: 1;
+}
+#initial_drawing .highlight{
+	fill: rgba(219, 234, 218, 0.6);
+	opacity: 0;
+	r: 20;
+	transition: cx .2s ease-out, cy .2s ease-out, opacity .2s ease-out;
+}
+#initial_drawing .hover{
+	r: 30;
+	fill: rgba(0,0,0,0);
+}
+#calculator #errors {
+  color: #f00;
+  margin: 2vh 0;
+}
+
+#result {
+  display: none;
+  padding-top: 4vh;
+}
+
+#drawing{
+	text-align: center;
+}
+
+#result td.variable {
+  text-align: left;
+  padding-right: 1.5vh;
+}
+
+#origination_notice {
+  display: none;
 }
