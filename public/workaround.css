@@ -1,0 +1,265 @@
+
+/* global reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border: none;
+}
+input {
+  outline: none;
+}
+body {
+  font-family: Helvetica;
+  background-color: #ceefcc;
+}
+body, html{
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* links */
+a {
+  color: #06f;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: #69f;
+}
+
+/* text */
+h3 {
+  font-size: 2.5vh;
+  color: #4c4c4c;
+  cursor: default;
+}
+p, h3, #main .slideable, #main .slideable .pane, #main li {
+  margin: 1vh 0;
+}
+p {
+  line-height: 1.5;
+}
+small {
+  font-size: 1.3vh;
+}
+#main ul, #main ol {
+  padding-left: 4vh;
+}
+
+
+
+/* slideables */
+#main .slideable {
+  margin-left: calc(50vw - 45vh);
+  margin-top: 2.5vh;
+  width: 90vh;
+  background-color: rgba(255, 255, 255, .85);
+  border-radius: .5vh;
+  box-shadow: 0 0.22vh 0.22vh 0 rgba(0,0,0,.16), 0 0 0 0.11vh rgba(0,0,0,.08);
+  padding: 1vh;
+  overflow: hidden;
+}
+
+#main .slideable h3 {
+  margin: 0;
+}
+
+/* forms */
+#calculator input.number {
+  margin: .8vh;
+  padding: .5vh 1vh;
+  border: .2vh solid #ccc;
+  border-radius: .5vh;
+  background-color: #fff;
+  text-align: right;
+  width: 14vh;
+  transition: border-color .2s ease-out;
+}
+#calculator input.focus {
+  border-color: #0c0;
+}
+#calculator input.error {
+  border-color: #f00;
+}
+
+#calculator .buttons input {
+  padding: 1.5vh .5vh;
+  cursor: pointer;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: .5vh;
+  font-size: 2vh;
+  width: 10vh;
+  margin: 1vh 0 0 0;
+}
+#calculator .buttons input.commit {
+  font-weight: bold;
+  margin-left: 33vh;
+  margin-right: 2vh;
+}
+
+/* tables */
+#main table {
+  margin: 1.5vh;
+  border: none;
+}
+#main th {
+  padding: .3vh;
+  text-align: left;
+}
+#main td {
+  padding: .2vh;
+  vertical-align: middle;
+}
+
+/* options */
+#main div.options {
+  text-align: right;
+  font-size: 1.3vh;
+}
+#main div.options a.disabled {
+  text-decoration: line-through;
+  user-select: none;
+  pointer-events: none;
+  cursor: default;
+  color: grey;
+}
+#main .slideable div.options {
+  float: right;
+  color: #666;
+}
+
+/* header */
+
+header > *, header .title{
+	position: absolute;
+}
+
+header .triangle{
+	top: 1.5vh;
+	left: calc(50vw - 12.5vh);
+	background-color: #1c201c;
+	width: 10vh;
+	height: 10vh;
+	clip-path: polygon(50% 12.3%, 0% 100%, 100% 100%);
+	transform: rotate(9deg);
+	overflow: hidden;
+}
+
+header .title{
+	left: 0;
+	top: 5.5vh;
+	width: 100vw;
+	font-size: 3vh;
+	text-align: center;
+	font-weight: bold;
+	color: #1c201c;
+	user-select: none;
+}
+
+header .triangle .title{
+	top: 2.85vh;
+	left: calc(12.5vh - 50vw);
+	transform: rotate(-9deg);
+	color: #DBEADA;
+}
+
+header .subtext{
+	margin: 0;
+	top: 8.5vh;
+	left: calc(50vw - 2.5vh);
+	font-size: 2vh;
+	font-weight: bold;
+	color: #1c201c;
+	user-select: none;
+}
+
+
+header {
+	height: 15vh;
+  overflow: hidden;
+}
+
+
+
+
+/* main content */
+#main {
+  margin-bottom: 2vh;
+  width: 100%;
+}
+#main .spotlight {
+  padding: 1.5vh;
+  margin-bottom: 1.5vh;
+  background-color: #fea;
+  border: .1vh solid #f93;
+  text-align: center;
+}
+
+/* footer */
+footer {
+  padding: 3vh 0 1vh 0;
+  font-size: 1.4vh;
+  text-align: center;
+}
+footer p {
+  margin: 0 0 1.5vh;
+}
+
+
+
+
+#calculator .buttons {
+  clear: both;
+}
+#calculator table.variables {
+  float: left;
+}
+#initial_drawing{
+	float: left;
+	margin: .5vh .5vh .5vh 5vh;
+	width: 38vh;
+	height: 18vh;
+	user-select: none;
+}
+#initial_drawing .triangle{
+	fill: rgba(219, 234, 218, 0.6);
+	stroke: rgba(219, 234, 218, 0.6);
+	stroke-width: 1;
+}
+#initial_drawing .highlight{
+	fill: rgba(219, 234, 218, 0.6);
+	opacity: 0;
+	r: 20;
+	transition: cx .2s ease-out, cy .2s ease-out, opacity .2s ease-out;
+}
+#initial_drawing .hover{
+	r: 30;
+	fill: rgba(0,0,0,0);
+}
+#calculator #errors {
+  color: #f00;
+  margin: 2vh 0;
+}
+
+#result {
+  display: none;
+  padding-top: 4vh;
+}
+
+#drawing{
+	text-align: center;
+}
+
+#result td.variable {
+  text-align: left;
+  padding-right: 1.5vh;
+}
+
+#origination_notice {
+  display: none;
+}
