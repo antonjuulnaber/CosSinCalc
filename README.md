@@ -16,5 +16,5 @@ The original project already has an offline version, but it is even older than t
 
 This is the source code of the "program".
 
-The original website is made by Molte Emil Strange Andersen, released under the MIT license (see the `MIT-LICENSE` file).
+The original website is made by Molte Emil Strange Andersen, released under the MIT license (see the `MIT-LICENSE` file).  
 The offline version is made by Anton Juul-Naber, released under the MIT license (see the `MIT-LICENSE` file).
