@@ -49,6 +49,9 @@ small {
 #main ul, #main ol {
   padding-left: 4vh;
 }
+label, th, td, input, .mathjaxPretext{
+	font-size: 1.7vh;
+}
 
 
 
