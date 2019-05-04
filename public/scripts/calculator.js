@@ -1,4 +1,4 @@
-head.ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
 	
   //Remove unzip message
   $("#unzip_message").hide();
