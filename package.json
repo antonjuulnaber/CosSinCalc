@@ -5,6 +5,6 @@
 	"dependencies": {
 		"jquery": "3.4.1",
 		"raphael": "2.2.8",
-		"mathjax": "2.7.5",
+		"mathjax": "2.7.5"
 	}
 }
