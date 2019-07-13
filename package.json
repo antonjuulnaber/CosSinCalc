@@ -1,7 +1,7 @@
 {
 	"repository": "antonjuulnaber/cossincalc-offline",
 	"name": "cossincalc-offline",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"dependencies": {
 		"jquery": "3.4.1",
 		"raphael": "2.2.8",
