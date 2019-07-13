@@ -148,6 +148,7 @@ header .triangle{
 	background-color: #1c201c;
 	width: 10vh;
 	height: 10vh;
+	-webkit-clip-path: polygon(50% 12.3%, 0% 100%, 100% 100%);
 	clip-path: polygon(50% 12.3%, 0% 100%, 100% 100%);
 	transform: rotate(9deg);
 	overflow: hidden;
