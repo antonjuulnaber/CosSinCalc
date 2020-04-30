@@ -3,8 +3,8 @@
 	"name": "cossincalc-offline",
 	"version": "1.0.3",
 	"dependencies": {
-		"jquery": "3.4.1",
-		"raphael": "2.2.8",
+		"jquery": "3.5.0",
+		"raphael": "2.3.0",
 		"mathjax": "2.7.5"
 	}
 }
